@@ -9,7 +9,7 @@ public class Dog {
 
     public Dog(String name, String description) {
         this.name = name;
-        this.name = description;
+        this.description = description;
     }
 
     public String getName() {
