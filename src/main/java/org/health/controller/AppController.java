@@ -22,12 +22,18 @@ public class AppController {
 
     }
 
-    @Autowired
+
     private Cat cat;
 
     @RequestMapping("/")
     public String getName(Model model) {
         model.addAttribute("name", cat.getName());
         return "cat";
+    }
+
+    // with setter since 2018
+    @Autowired
+    public void setCat(Cat cat) {
+        this.cat = cat;
     }
 }

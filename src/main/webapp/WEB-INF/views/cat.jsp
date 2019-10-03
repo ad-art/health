@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<p> Cat: ${name}!</p>
+<p> Cat: ${name}</p>
 </body>
 </html>
