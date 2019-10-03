@@ -25,6 +25,11 @@ public class AppController {
 
     private Cat cat;
 
+    // @Autowired   before Spring 5
+    public AppController(Cat cat) {
+        this.cat = cat;
+    }
+
     @RequestMapping("/")
     public String getName(Model model) {
         model.addAttribute("name", cat.getName());
@@ -32,8 +37,8 @@ public class AppController {
     }
 
     // with setter since 2018
-    @Autowired
-    public void setCat(Cat cat) {
-        this.cat = cat;
-    }
+//    @Autowired
+//    public void setCat(Cat cat) {
+//        this.cat = cat;
+//    }
 }
