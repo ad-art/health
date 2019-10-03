@@ -1,14 +1,19 @@
 package org.health.model;
 
-public class Cat {
+import org.springframework.stereotype.Component;
+
+@Component
+public class Rabbit {
+
     private String name;
 
-    public Cat() {
+    public Rabbit() {
     }
 
-    public Cat(String name) {
+    public Rabbit(String name) {
         this.name = name;
     }
+
 
     public String getName() {
         return name;
