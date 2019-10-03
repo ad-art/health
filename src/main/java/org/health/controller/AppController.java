@@ -1,11 +1,11 @@
 package org.health.controller;
 
 import org.health.model.Cat;
+import org.health.model.Dog;
 import org.health.model.Rabbit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     private Cat cat;
     private Rabbit rabbit;
+    private Dog dog;
 
     // @Autowired   before Spring 5
-    public AppController(Cat cat) {
+    public AppController(Cat cat, Dog dog) {
         this.cat = cat;
+        this.dog = dog;
     }
 
     // http://localhost:8080/
@@ -36,6 +38,8 @@ public class AppController {
         model.addAttribute("name", cat.getName());
         //rabbit.setName("Bags");
         model.addAttribute("name2", rabbit.getName());
+        model.addAttribute("name3", dog.getName());
+        model.addAttribute("description", dog.getDescrition());
         return "cat";
     }
 
