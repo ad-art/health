@@ -5,6 +5,7 @@ import org.health.model.Cat;
 import org.health.model.Dog;
 import org.health.model.Rabbit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Controller;
@@ -55,6 +56,7 @@ public class AppController {
     }
 
     @Autowired
+    @Qualifier("turtle")  // @Qualifier(value = "turtle")
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
