@@ -3,6 +3,7 @@ package org.health.controller;
 import org.health.model.Cat;
 import org.health.model.Rabbit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,8 @@ public class AppController {
     private Rabbit rabbit;
 
     // @Autowired   before Spring 5
-    public AppController(Cat cat, Rabbit rabbit) {
+    public AppController(Cat cat) {
         this.cat = cat;
-        this.rabbit = rabbit;
     }
 
     // http://localhost:8080/
@@ -34,9 +34,15 @@ public class AppController {
     @RequestMapping("/")
     public String getName(Model model) {
         model.addAttribute("name", cat.getName());
-        rabbit.setName("Bags");
+        //rabbit.setName("Bags");
         model.addAttribute("name2", rabbit.getName());
         return "cat";
+    }
+
+    @Autowired
+    @Value("Bagzz")
+    public void setRabbit(Rabbit rabbit) {
+        this.rabbit = rabbit;
     }
 
     // with setter since 2018
