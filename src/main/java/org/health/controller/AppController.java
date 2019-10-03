@@ -56,7 +56,7 @@ public class AppController {
     }
 
     @Autowired
-    @Qualifier("turtle")  // @Qualifier(value = "turtle")
+    @Qualifier("croc")  // @Qualifier(value = "turtle")
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
