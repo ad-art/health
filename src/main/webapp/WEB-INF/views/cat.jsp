@@ -7,6 +7,7 @@
 <p> Cat ${name}</p>
 <p> Rabbit ${name2}</p>
 <p> Dog ${name3} is ${description}  </p>
+<p> Animal ${name4}</p>
 
 </body>
 </html>
