@@ -1,9 +1,6 @@
 package org.health.controller;
 
-import org.health.model.Animal;
-import org.health.model.Cat;
-import org.health.model.Dog;
-import org.health.model.Rabbit;
+import org.health.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +18,7 @@ public class AppController {
     private Dog dog;
     private Animal animal;
 
-
+    private SQLRequest sqlRequest;
 
     // @Autowired   before Spring 5
     public AppController(Cat cat, Dog dog) {
@@ -36,6 +33,13 @@ public class AppController {
         model.addAttribute("name", name);
         return "hello";
 
+    }
+
+
+    @RequestMapping("/create")
+    public String createTable(Model model) {
+        model.addAttribute("status", sqlRequest.getTableCreationStatus());
+        return "table";
     }
 
     @RequestMapping("/")
@@ -61,6 +65,10 @@ public class AppController {
         this.animal = animal;
     }
 
+    @Autowired
+    public void setSqlRequest(SQLRequest sqlRequest) {
+        this.sqlRequest = sqlRequest;
+    }
 
     // with setter since 2018
 //    @Autowired
