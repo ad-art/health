@@ -3,11 +3,15 @@ package org.health.model.impl;
 import org.health.model.SQLRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
 
 @Service("sqlRequest")
 public class SQLRequestImpl implements SQLRequest {
     private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
     public String getTableCreationStatus() {
@@ -21,9 +25,9 @@ public class SQLRequestImpl implements SQLRequest {
                     "    color_id integer,\n" +
                     "    CONSTRAINT dpgs_key PRIMARY KEY (id)\n" +
                     ")");
-            return "table created";
+            return "table dogs created";
         } catch (Exception ex) {
-            return "table creation failed" + ex.getMessage();
+            return "table dogs creation failed" + ex.getMessage();
         }
     }
 
@@ -32,4 +36,15 @@ public class SQLRequestImpl implements SQLRequest {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
+    public Integer getInfo(String name) {
+        String sql = "select count(*) from public.dogs where name = :name";
+        SqlParameterSource namedparametr = new MapSqlParameterSource("name", name);
+        return this.namedParameterJdbcTemplate.queryForObject(sql, namedparametr, Integer.class);
+    }
+
+    @Autowired
+    public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+    }
 }
