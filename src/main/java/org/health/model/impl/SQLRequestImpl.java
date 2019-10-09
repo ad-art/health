@@ -25,6 +25,8 @@ public class SQLRequestImpl implements SQLRequest {
                     "    color_id integer,\n" +
                     "    CONSTRAINT dpgs_key PRIMARY KEY (id)\n" +
                     ")");
+            jdbcTemplate.update("insert into public.dogs(id, name, color_id) values(?, ?, ?)",
+                    1, "dog1", 2);
             return "table dogs created";
         } catch (Exception ex) {
             return "table dogs creation failed" + ex.getMessage();

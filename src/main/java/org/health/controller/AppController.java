@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +20,7 @@ public class AppController {
 
     private SQLRequest sqlRequest;
 
-    // @Autowired   before Spring 5
+    //@Autowired   before Spring 5
     public AppController(Cat cat, Dog dog) {
         this.cat = cat;
         this.dog = dog;

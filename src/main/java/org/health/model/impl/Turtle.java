@@ -1,7 +1,6 @@
 package org.health.model.impl;
 
 import org.health.model.Animal;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
