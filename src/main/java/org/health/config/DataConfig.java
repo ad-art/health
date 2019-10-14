@@ -8,6 +8,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
 
@@ -33,6 +37,17 @@ public class DataConfig {
         jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
+     //in memory (non for production!)
+    @Bean
+    public UserDetailsService userDetailsService() {
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(users.username("admin").password("admin").roles("ADMIN").build());
+        manager.createUser(users.username("user").password("user").roles("USER").build());
+        return manager;
+    }
+
+
 
     @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
