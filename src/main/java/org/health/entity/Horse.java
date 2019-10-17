@@ -8,10 +8,11 @@ public class Horse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-//    @Column(name = "horse_name")
+    @Column(name = "horse_name")
     private String name;
     private String description;
+
+
 
     public long getId() {
         return id;
