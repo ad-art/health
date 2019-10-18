@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class TempController  {
+public class TempController {
 
     @RequestMapping("/admin")
     public String getAdminPage() {
@@ -24,6 +24,13 @@ public class TempController  {
         model.addAttribute("password", password);
         model.addAttribute("encodePassword", new BCryptPasswordEncoder().encode(password));
         return "password";
-}
+
+    }
+
+    @RequestMapping("/api/horse")
+    public String getHorsePage() {
+        return "horse";
+    }
+
 
 }
