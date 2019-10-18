@@ -16,7 +16,46 @@ var RestGetAll = function () {
         dataType: 'json',
         accept: 'json',
         contentType: 'application/json;utf-8',
-        async:false,
+        async: false,
+        success: function (result) {
+            $('#response').html(JSON.stringify(result))
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#response').html(JSON.stringify(jqXHR))
+        }
+    });
+};
+
+var RestGet = function (id) {
+    $.ajax({
+        type: 'GET',
+        url: service + '/get/' + id,
+        dataType: 'json',
+        accept: 'json',
+        contentType: 'application/json;utf-8',
+        async: false,
+        success: function (result) {
+            $('#response').html(JSON.stringify(result))
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            $('#response').html(JSON.stringify(jqXHR))
+        }
+    });
+};
+
+var RestPost = function (name, description) {
+    var JSONObject = {
+        'name': name,
+        'description': description
+    };
+    $.ajax({
+        type: 'POST',
+        url: service + '/add/',
+        dataType: 'json',
+        data: JSON.stringify(JSONObject),
+        accept: 'json',
+        contentType: 'application/json;utf-8',
+        async: false,
         success: function (result) {
             $('#response').html(JSON.stringify(result))
         },
@@ -41,6 +80,23 @@ var RestGetAll = function () {
         <td>/horse/all</td>
         <td>
             <button type="button" onClick="RestGetAll()">try</button>
+        </td>
+    </tr>
+    <tr>
+        <td>Get horse by id - <code><strong>GET</strong></code></td>
+        <td>/horse/get/id</td>
+        <td>
+            id: <input id="getHorseId" value="1"/>
+            <button type="button" onClick="RestGet($('#getHorseId').val())">try</button>
+        </td>
+    </tr>
+    <tr>
+        <td>Add new horse - <code><strong>POST</strong></code></td>
+        <td>/horse/add</td>
+        <td>
+            name: <input id="horseNameForAdd" value=""/>
+            description: <input id="horseDescForAdd" value=""/>
+            <button type="button" onClick="RestPost($('#horseNameForAdd').val(), $('#horseDescForAdd').val())">try</button>
         </td>
     </tr>
 </table>
