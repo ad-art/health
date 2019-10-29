@@ -1,21 +1,16 @@
 package org.health.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name="horses")
-public class Horse {
+@Table(name="mares")
+public class Mare {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "horse_name")
+    @Column(name = "mare_name")
     private String name;
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER) // ALL, CASCADE DELETE, INIT
-    private List<Mare> mares = new ArrayList<>();
-
 
     public long getId() {
         return id;
