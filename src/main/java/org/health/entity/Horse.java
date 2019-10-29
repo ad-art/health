@@ -40,4 +40,12 @@ public class Horse {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public List<Mare> getMares() {
+        return mares;
+    }
+
+    public void setMares(List<Mare> mares) {
+        this.mares = mares;
+    }
 }
