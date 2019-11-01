@@ -37,7 +37,7 @@ public interface EmployeeService {
      *
      * @return all employees
      * */
-    List<Employee> getAllEmployees();
+    List<EmployeeDto> getAllEmployees();
 
     /**
      * method required for deletion employee by id

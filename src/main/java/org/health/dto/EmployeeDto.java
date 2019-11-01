@@ -13,6 +13,15 @@ public class EmployeeDto {
     private String name;
     private String title;
     private List<CarDto> carList = new ArrayList<>();
+    private List<EmployeeDto> employeeDtoList = new ArrayList<>();
+
+    public List<EmployeeDto> getEmployeeDtoList() {
+        return employeeDtoList;
+    }
+
+    public void setEmployeeDtoList(List<EmployeeDto> employeeDtoList) {
+        this.employeeDtoList = employeeDtoList;
+    }
 
     public EmployeeDto getEmployeeDto(Employee employee) {
         List<CarDto> carDtos = new ArrayList<>();
