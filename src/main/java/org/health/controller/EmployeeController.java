@@ -1,6 +1,7 @@
 package org.health.controller;
 
 
+import org.health.dto.EmployeeDto;
 import org.health.entity.Employee;
 import org.health.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Employee getEmployeeById(@PathVariable("id") long id) {
+    public EmployeeDto getEmployeeById(@PathVariable("id") long id) {
         return employeeService.getEmployee(id);
     }
 
@@ -45,8 +46,8 @@ public class EmployeeController {
         return employeeService.deleteEmployee(id);
     }
 
-
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
-    }}
+    }
+}

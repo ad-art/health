@@ -1,6 +1,7 @@
 package org.health.service.impl;
 
 
+import org.health.dto.EmployeeDto;
 import org.health.entity.Employee;
 import org.health.dao.EmployeeDao;
 import org.health.service.EmployeeService;
@@ -10,8 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("employeeService")
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDao employeeDao;
+    private EmployeeDto employeeDto;
 
     @Override
     public Employee addEmployee(Employee employee) {
@@ -24,8 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee getEmployee(long id) {
-        return employeeDao.getEntity(id);
+    public EmployeeDto getEmployee(long id) {
+        //return employeeDao.getEntity(id);
+        return employeeDto.getEmployeeDto(employeeDao.getEntity(id));
     }
 
     @Override
@@ -41,5 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Autowired
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
+    }
+
+    @Autowired
+    public void setEmployeeDto(EmployeeDto employeeDto) {
+        this.employeeDto = employeeDto;
     }
 }

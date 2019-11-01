@@ -9,8 +9,10 @@ import org.health.entity.Horse;
 import org.health.model.Dog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
+@EnableAspectJAutoProxy
 public class AppConfig {
 
     @Bean

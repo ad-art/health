@@ -25,19 +25,19 @@ public class EmployeeControllerIntegrationTest {
 
     @Test
     public void testAddAndGet() {
-        Employee vano = createEmployee();
+        Employee ivan = createEmployee();
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<Employee> responseEntity = template.exchange(
+        ResponseEntity<EmployeeDto> responseEntity = template.exchange(
                 ROOT + GET + "/{id}",
                 HttpMethod.GET,
                 null,
-                Employee.class,
-                vano.getId()
+                EmployeeDto.class,
+                ivan.getId()
         );
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        Employee receivedEmployee = responseEntity.getBody();
+        EmployeeDto receivedEmployee = responseEntity.getBody();
         assertNotNull(receivedEmployee);
     }
 

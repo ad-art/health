@@ -1,5 +1,6 @@
 package org.health.service;
 
+import org.health.dto.EmployeeDto;
 import org.health.entity.Employee;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public interface EmployeeService {
      * */
 
 
-    Employee getEmployee(long id);
+    EmployeeDto getEmployee(long id);
 
     /**
      * method required for getting employees
