@@ -38,6 +38,7 @@ public class HorseController {  // url, method, request type
     @ResponseBody
     public List<Horse> getAllHorses() {
         return horseService.getAllHorses();
+
     }
 
 
